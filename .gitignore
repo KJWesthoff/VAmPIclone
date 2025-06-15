@@ -95,3 +95,9 @@ venv.bak/
 .mypy_cache/
 
 .idea/
+
+# Claude Code settings
+.claude/*
+
+# Poetry lock file should NOT be ignored
+# poetry.lock
