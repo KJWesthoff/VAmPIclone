@@ -1,0 +1,17 @@
+version: 1.0
+runtime: docker
+build:
+  commands:
+    build:
+      - echo "Building VAmPI application"
+run:
+  runtime-version: latest
+  command: python app.py
+  network:
+    port: 5000
+    env: PORT
+  env:
+    - name: vulnerable
+      value: "1"
+    - name: tokentimetolive
+      value: "300"
