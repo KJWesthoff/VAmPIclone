@@ -3,9 +3,8 @@ runtime: docker
 build:
   commands:
     build:
-      - echo "Building VAmPI application"
+      - echo "No custom build needed - using Dockerfile"
 run:
-  command: python app.py
   network:
     port: 5000
     env: PORT
