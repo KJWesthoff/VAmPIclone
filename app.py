@@ -1,5 +1,4 @@
 from config import vuln_app, db
-from models.user_model import User
 import os
 
 '''
@@ -16,6 +15,8 @@ alive = int(os.getenv('tokentimetolive', 60))
 # Initialize database on startup
 def init_db():
     try:
+        # Import here to avoid circular import
+        from models.user_model import User
         # Check if database exists and has tables
         db.create_all()
         # Only populate if no users exist
