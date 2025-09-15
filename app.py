@@ -12,22 +12,11 @@ vuln = int(os.getenv('vulnerable', 1))
 alive = int(os.getenv('tokentimetolive', 60))
 
 
-# Initialize database on startup
-def init_db():
-    try:
-        # Import here to avoid circular import
-        from models.user_model import User
-        # Check if database exists and has tables
-        db.create_all()
-        # Only populate if no users exist
-        if not User.query.first():
-            User.init_db_users()
-            print("Database initialized with default data")
-    except Exception as e:
-        print(f"Database initialization error: {e}")
-
 # start the app with port 5000 and debug on!
 if __name__ == '__main__':
-    with vuln_app.app.app_context():
-        init_db()
-    vuln_app.run(host='0.0.0.0', port=5000, debug=True)
+    print("Starting VAmPI application...")
+    try:
+        vuln_app.run(host='0.0.0.0', port=5000, debug=False)
+    except Exception as e:
+        print(f"Application startup error: {e}")
+        raise
