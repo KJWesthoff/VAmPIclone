@@ -1,0 +1,14 @@
+version: 1.0
+runtime: docker
+build:
+  commands:
+    build:
+      - echo "Using Dockerfile for build"
+run:
+  network:
+    port: 5000
+  env:
+    - name: vulnerable
+      value: "1"
+    - name: tokentimetolive
+      value: "300"
